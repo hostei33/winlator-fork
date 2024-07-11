@@ -9,11 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
@@ -27,22 +25,15 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.datainsert.winlator.all.ExtraFeatures;
-import com.example.datainsert.winlator.all.QH;
 import com.google.android.material.navigation.NavigationView;
-import com.winlator.container.Container;
-import com.winlator.container.ContainerManager;
-import com.winlator.container.Shortcut;
 import com.winlator.contentdialog.ContentDialog;
 import com.winlator.core.Callback;
-import com.winlator.xenvironment.ImageFsInstaller;
 import com.winlator.core.PreloaderDialog;
+import com.winlator.xenvironment.ImageFsInstaller;
 
-import java.io.File;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public static final byte DEBUG_LEVEL = 0; // FIXME [0=disable, 2=wine, 3=box86_64, 4=box86_64+]
     public static final @IntRange(from = 1, to = 19) byte CONTAINER_PATTERN_COMPRESSION_LEVEL = 9;
     public static final byte PERMISSION_WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1;
     public static final byte OPEN_FILE_REQUEST_CODE = 2;
@@ -59,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        //初始化QH信息
-        QH.refreshIsTest(this);
-
         drawerLayout = findViewById(R.id.DrawerLayout);
         NavigationView navigationView = findViewById(R.id.NavigationView);
         navigationView.setNavigationItemSelectedListener(this);
@@ -71,10 +59,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-
-        //添加桌面快捷方式启动的判断
-        ExtraFeatures.AndroidShortcut.handleIfStartFromScreenShortcut(this);
-
         editInputControls = intent.getBooleanExtra("edit_input_controls", false);
         if (editInputControls) {
             selectedProfileId = intent.getIntExtra("selected_profile_id", 0);
@@ -211,8 +195,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 "Wine (<a href=\"https://www.winehq.org\">winehq.org</a>)",
                 "Box86/Box64 by <a href=\"https://github.com/ptitSeb\">ptitseb</a>",
                 "PRoot (<a href=\"https://proot-me.github.io\">proot-me.github.io</a>)",
-                "Mesa3D (<a href=\"https://www.mesa3d.org\">mesa3d.org</a>)",
+                "Mesa (Turnip/Zink/VirGL) (<a href=\"https://www.mesa3d.org\">mesa3d.org</a>)",
                 "DXVK (<a href=\"https://github.com/doitsujin/dxvk\">github.com/doitsujin/dxvk</a>)",
+                "VKD3D (<a href=\"https://gitlab.winehq.org/wine/vkd3d\">gitlab.winehq.org/wine/vkd3d</a>)",
                 "D8VK (<a href=\"https://github.com/AlpyneDreams/d8vk\">github.com/AlpyneDreams/d8vk</a>)",
                 "CNC DDraw (<a href=\"https://github.com/FunkyFr3sh/cnc-ddraw\">github.com/FunkyFr3sh/cnc-ddraw</a>)"
             );

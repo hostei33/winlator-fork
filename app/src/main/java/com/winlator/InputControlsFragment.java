@@ -8,13 +8,13 @@ import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import com.winlator.core.AppUtils;
 import com.winlator.core.Callback;
@@ -116,12 +117,26 @@ public class InputControlsFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
+        
+        final CheckBox cbCursorDirect = view.findViewById(R.id.CBCursorDirect);
+        cbCursorDirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                currentProfile.setCursorDirect(!currentProfile.getCursorDirect());
+                currentProfile.save();
+            }
+        });
 
         updateLayout = () -> {
             if (currentProfile != null) {
                 sbCursorSpeed.setProgress((int)(currentProfile.getCursorSpeed() * 100));
+                cbCursorDirect.setChecked(currentProfile.getCursorDirect());
             }
-            else sbCursorSpeed.setProgress(100);
+            else {
+                sbCursorSpeed.setProgress(100);
+                cbCursorDirect.setChecked(false);
+            }
+            
             loadExternalControllers(view);
         };
 

@@ -182,6 +182,12 @@
                         android:layout_height="wrap_content"
                         android:min="10"
                         android:max="200" />
+                    <CheckBox
+                        android:id="@+id/CBCursorDirect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/map_cursor_directly"
+                        android:layout_marginTop="8dp" />
 
                     <CheckBox
                         android:id="@+id/CBUseDRI3"
@@ -195,7 +201,44 @@
                     style="@style/FieldSetLabel"
                     android:text="@string/xserver" />
             </FrameLayout>
-            <include layout="@layout/zzz_settings_fragment_extra" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout style="@style/FieldSet">
+                    <CheckBox
+                        android:id="@+id/CBEnableWineDebug"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enable_wine_debug" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/LLWineDebugChannels"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="4dp" />
+                    </HorizontalScrollView>
+
+                    <View style="@style/FieldSeparator" />
+
+                    <CheckBox
+                        android:id="@+id/CBEnableBox86_64Logs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enable_box86_64_logs"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/FieldSetLabel"
+                    android:text="@string/logs" />
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 
