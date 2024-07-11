@@ -51,7 +51,7 @@ public class ControlsProfile implements Comparable<ControlsProfile> {
     public void setCursorSpeed(float cursorSpeed) {
         this.cursorSpeed = cursorSpeed;
     }
-    
+
     public boolean getCursorDirect() {
         return cursorDirect;
     }

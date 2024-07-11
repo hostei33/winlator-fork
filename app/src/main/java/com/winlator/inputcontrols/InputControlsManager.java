@@ -228,8 +228,6 @@ public class InputControlsManager {
                     cursorDirect = reader.nextBoolean();
                     fieldsRead++;
                 }
-                
-                
                 else {
                     if (fieldsRead == 4) break;
                     reader.skipValue();

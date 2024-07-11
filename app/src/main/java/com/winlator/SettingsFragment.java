@@ -106,7 +106,7 @@ public class SettingsFragment extends Fragment {
         final Spinner sBox86Preset = view.findViewById(R.id.SBox86Preset);
         final Spinner sBox64Preset = view.findViewById(R.id.SBox64Preset);
         loadBox86_64PresetSpinners(view, sBox86Preset, sBox64Preset);
-        
+
         final CheckBox cbCursorDirect = view.findViewById(R.id.CBCursorDirect);
         cbCursorDirect.setChecked(preferences.getBoolean("cursor_direct", false));
 

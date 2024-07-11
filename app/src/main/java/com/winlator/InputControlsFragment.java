@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
@@ -117,7 +117,7 @@ public class InputControlsFragment extends Fragment {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
-        
+
         final CheckBox cbCursorDirect = view.findViewById(R.id.CBCursorDirect);
         cbCursorDirect.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +136,6 @@ public class InputControlsFragment extends Fragment {
                 sbCursorSpeed.setProgress(100);
                 cbCursorDirect.setChecked(false);
             }
-            
             loadExternalControllers(view);
         };
 

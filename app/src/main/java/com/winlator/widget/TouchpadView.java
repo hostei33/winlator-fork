@@ -310,6 +310,7 @@ public class TouchpadView extends View {
     public void setSensitivity(float sensitivity) {
         this.sensitivity = sensitivity;
     }
+
     public void setCursorDirect(boolean cursorDirect) {
         this.cursorDirect = cursorDirect;
     }
